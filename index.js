@@ -15,7 +15,9 @@ function getCSVEndpoint(endpoint, objectwise) {
    */
 
   return new Promise(function(resolve, reject) {
-    fetch(endpoint).
+    var headers = {};
+    headers['Access-Control-Allow-Credentials'] = false;
+    fetch(endpoint, {headers: headers}).
         then(function(response) {
           if (response.status != 200) {
             reject('Bad response from server');
